@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Municipios de Jaén</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verificar Municipio de Jaén</h1>
+    <input type="text" id="municipioInput" placeholder="Introduce un municipio">
+    <button onclick="verificarMunicipio()">Verificar</button>
+    <div class="result" id="resultado"></div>
+  </div>
+
+  <script>
+    const municipiosJaen = [
+      "Jaén", "Andújar", "Linares", "Martos", "Ubeda", "Baeza", "Alcalá la Real",
+      "Torredonjimeno", "Torredelcampo", "La Carolina", "Bailén", "Mengíbar",
+      "Villanueva del Arzobispo", "Jodar", "Arjona", "Mancha Real", "Cazorla",
+      "Santisteban del Puerto", "Porcuna", "Huelma", "Beas de Segura",
+      // Puedes añadir todos los municipios restantes aquí
+    ];
+
+    function verificarMunicipio() {
+      const input = document.getElementById('municipioInput').value.trim().toLowerCase();
+      const resultado = document.getElementById('resultado');
+
+      const pertenece = municipiosJaen.some(m => m.toLowerCase() === input);
+
+      if (pertenece) {
+        resultado.textContent = `¡${input.charAt(0).toUpperCase() + input.slice(1)} pertenece a la provincia de Jaén!`;
+        resultado.style.color = 'green';
+      } else {
+        resultado.textContent = `No pertenece a la provincia de Jaén.`;
+        resultado.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
